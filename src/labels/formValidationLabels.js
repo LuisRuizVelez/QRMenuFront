@@ -1,0 +1,1 @@
+export const IS_REQUIRED = "Este campo es requerido";

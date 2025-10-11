@@ -11,6 +11,9 @@
 # production
 /build
 
+# My Custom Templates
+/templates
+
 # misc
 .DS_Store
 .env.local

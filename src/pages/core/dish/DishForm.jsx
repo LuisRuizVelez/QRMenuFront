@@ -9,6 +9,7 @@ import Switch from "react-switch";
 
 // components
 import DishLangs from "./DishLangs"; // Lang Component
+import CustomSelect from "../../../components/CustomSelect";
 
 
 // actions
@@ -18,20 +19,16 @@ import navigationActions from "../../../store/navigation/navigationActions";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
-import {
-    API_PATH_CORE_DISH,
-    API_PATH_CORE_MENU,
-    API_PATH_DISH_CATEGORY
-} from "../../../connection/apiPaths";
+import {API_PATH_CORE_DISH, API_PATH_CORE_MENU, API_PATH_DISH_CATEGORY} from "../../../connection/apiPaths";
 import {STORE_PATHS_CORE_DISH} from "../../../store/StorePaths";
-import CustomSelect from "../../../components/CustomSelect";
+
 
 const DishForm = props => {
     const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_CORE_DISH));
     const { selectedItem, langsEdited:langs } = componentState?.data;
 
     const [isActive, setIsActive] = useState(selectedItem?.isActive || false);
-    const [dishDrinkCategory, setDishDrinkCategory] = useState(selectedItem?.dishDrinkCategory?.id || null)
+    const [dishCategory, setDishCategory] = useState(selectedItem?.dishCategory?.id || null)
     const [menu, setMenu] = useState(selectedItem?.menu?.id || null)
 
     const validationSchema = Yup.object().shape({}).required()
@@ -56,7 +53,7 @@ const DishForm = props => {
                 ...data,
                 langs,
                 isActive,
-                dishDrinkCategory,
+                dishCategory: dishCategory ? { id: dishCategory?.id } : null,
                 menu
             }
         }
@@ -83,9 +80,9 @@ const DishForm = props => {
                     <Col>
                         <CustomSelect
                             title={'¿A qué categoría pertenece este platillo?' }
-                            initialValue={dishDrinkCategory}
+                            initialValue={dishCategory}
                             servicePath={API_PATH_DISH_CATEGORY}
-                            onChange={ setDishDrinkCategory }
+                            onChange={ setDishCategory }
                         />
                     </Col>
                     <Col>

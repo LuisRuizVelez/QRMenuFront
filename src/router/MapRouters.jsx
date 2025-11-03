@@ -14,6 +14,10 @@ import DishAttributes from "../pages/categories/dishAttributes/DishAttributes";
 import DishPresentation from "../pages/categories/dishPresentation/DishPresentation";
 import Menu from "../pages/core/menu/Menu";
 import Dish from "../pages/core/dish/Dish";
+import DrinkPresentation from "../pages/categories/drinkPresentation/DrinkPresentation";
+import DrinkCategory from "../pages/categories/drink/DrinkCategory";
+import Drink from "../pages/core/drink/Drink";
+import Currency from "../pages/catalogs/currency/Currency";
 
 const MAP_ROUTERS = [
     {
@@ -33,6 +37,12 @@ const MAP_ROUTERS = [
         name:'Platillos',
         path:'/dish',
         component: <Dish />
+    },
+    {
+        code:'rest',
+        name:'Bebidas',
+        path:'/drink',
+        component: <Drink />
     },
 
 
@@ -63,6 +73,16 @@ const MAP_ROUTERS = [
         name:'Presentación de los Platillos',
         path:'/categories/dish_presentation',
         component: <DishPresentation />
+    }, {
+        code:'categories',
+        name:'Presentación del Bebidas',
+        path:'/categories/drink_presentation',
+        component: <DrinkPresentation />
+    }, {
+        code:'categories',
+        name:'Categorías de la Bebida',
+        path:'/categories/drink',
+        component: <DrinkCategory />
     },
 
 
@@ -79,6 +99,11 @@ const MAP_ROUTERS = [
         name:'Idiomas',
         path:'/categories/lang',
         component: <Lang />
+    },{
+        code:'config',
+        name:'Monedas',
+        path:'/categories/currency',
+        component: <Currency />
     },
 
 

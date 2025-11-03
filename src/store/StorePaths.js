@@ -1,5 +1,6 @@
 export const STORE_PATHS_LANG = 'catalogs/lang';
 export const STORE_PATHS_COUNTRY = 'catalogs/country';
+export const STORE_PATHS_CURRENCY = 'catalogs/currency';
 
 
 
@@ -18,8 +19,15 @@ export const STORE_PATHS_MENU_CATEGORY = 'categories/menuCategory';
 export const STORE_PATHS_DISH_CATEGORY = 'categories/dishCategory';
 export const STORE_PATHS_DISH_ATTRIBUTES = 'categories/dishAttributes';
 export const STORE_PATHS_DISH_PRESENTATION = 'categories/dishPresentation';
+export const STORE_PATHS_DRINK_CATEGORY = 'categories/drinkCategory';
+export const STORE_PATHS_DRINK_PRESENTATION = 'categories/drinkPresentation';
+
+
 
 
 export const STORE_PATHS_CORE_RESTAURANT = 'core/restaurant';
 export const STORE_PATHS_CORE_MENU = 'core/menu';
 export const STORE_PATHS_CORE_DISH = 'core/dish';
+export const STORE_PATHS_DISH_PRICE = 'core/dishPrices';
+export const STORE_PATHS_CORE_DRINK = 'core/drink';
+export const STORE_PATH_DRINK_PRICE = 'core/drinkPrices';

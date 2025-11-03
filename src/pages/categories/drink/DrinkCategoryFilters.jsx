@@ -10,18 +10,14 @@ import {getStateByPath, navigationSetFilter} from "../../../store/navigation/nav
 
 
 // paths
-import {STORE_PATHS_CORE_DISH} from "../../../store/StorePaths";
-import CustomSelect from "../../../components/CustomSelect";
-import {API_PATH_CORE_MENU, API_PATH_DISH_CATEGORY} from "../../../connection/apiPaths";
+import {STORE_PATHS_DRINK_CATEGORY} from "../../../store/StorePaths";
 
 
-const DishFilters =  () => {
-    const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_CORE_DISH));
+const DrinkCategoryFilters =  () => {
+    const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_DRINK_CATEGORY));
     const { filter } = componentState?.data || {};
     const dispatch = useDispatch();
 
-    const [dishCategory, setDishCategory] = useState(filter?.item?.dishCategory?.id || null)
-    const [menu, setMenu] = useState(filter?.item?.menu?.id || null)
     const [isActive, setIsActive] = useState(filter?.item?.isActive || null);
 
 
@@ -31,7 +27,7 @@ const DishFilters =  () => {
         reset,
     } = useForm({
         defaultValues: {
-            name: filter?.item?.name,
+            code: filter?.item?.code,
         }
     });
 
@@ -41,23 +37,18 @@ const DishFilters =  () => {
             item : {
                 ...data,
                 isActive,
-                dishCategory,
-                menu
             }
         };
 
 
-        dispatch(navigationSetFilter(STORE_PATHS_CORE_DISH, filterData));
+        dispatch(navigationSetFilter(STORE_PATHS_DRINK_CATEGORY, filterData));
     };
 
 
     const cleanFields = () => {
         setIsActive(null);
-        setDishCategory(null)
-        setMenu(null)
-
         reset({
-            name: ''
+            code: ''
         });
     }
 
@@ -67,37 +58,19 @@ const DishFilters =  () => {
         <CardBody>
             <Row>
                 <Col>
-                    <CustomSelect
-                        title={'Muestra los platillos que tengan la categoría:' }
-                        initialValue={dishCategory}
-                        servicePath={API_PATH_DISH_CATEGORY}
-                        onChange={ setDishCategory }
-                    />
-                </Col>
-                <Col>
-                    <CustomSelect
-                        title={'Muestra los platillos que pertenescan al menu:' }
-                        initialValue={menu}
-                        servicePath={API_PATH_CORE_MENU}
-                        onChange={ setMenu }
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
                     <FormGroup>
-                        <label className="form-label">Nombre del platillo:</label>
+                        <label className="form-label">Código de la categoría:</label>
                         <input
                             className={`form-control`}
                             type="text"
-                            {...register("name")}
+                            {...register("code")}
                         />
                     </FormGroup>
                 </Col>
                 <Col>
                     <FormGroup>
                         <label className="form-label">
-                            <span>¿Platillos Activos?:</span> <br/>
+                            <span>¿La categoría esta activa?</span> <br/>
                             <Switch
                                 checked={isActive}
                                 onChange={() => setIsActive(!isActive)}
@@ -125,4 +98,4 @@ const DishFilters =  () => {
 
 }
 
-export default DishFilters
+export default DrinkCategoryFilters

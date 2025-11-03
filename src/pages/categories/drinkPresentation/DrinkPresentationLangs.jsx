@@ -4,11 +4,11 @@ import {Col, Row} from "reactstrap";
 import EditableLangs from "../../../components/EditableLangs";
 
 // store
-import {STORE_PATHS_DISH_PRESENTATION} from "../../../store/StorePaths";
+import {STORE_PATHS_DRINK_PRESENTATION} from "../../../store/StorePaths";
 
 
 
-const DishPresentationLangs = () => {
+const DrinkPresentationLangs = () => {
 
     const children = (key, child, onInputChange) => {
 
@@ -31,11 +31,9 @@ const DishPresentationLangs = () => {
 
     return <EditableLangs
         children={children}
-        storagePath={STORE_PATHS_DISH_PRESENTATION}
-        defaultValues={{
-            title: ''
-        }}
+        storagePath={STORE_PATHS_DRINK_PRESENTATION}
+        defaultValues={{title:''}}
     />
 }
 
-export default DishPresentationLangs
+export default DrinkPresentationLangs

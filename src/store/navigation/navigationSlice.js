@@ -49,7 +49,15 @@ export const navigationSlice = createSlice({
         },
         addItem: (state, action) => {
             return state.map(s => s.path === action.payload.path
-                ? { ...s, data: { ...s.data, items: [ ...s.data.items, action.payload.item ] } }
+                ? {
+                    ...s,
+                    data: {
+                        ...s.data,
+                        items: s.data.items.some(i => i.id === action.payload.item.id)
+                            ? s.data.items.map(i => i.id === action.payload.item.id ? action.payload.item : i)
+                            : [ ...s.data.items, action.payload.item ]
+                    }
+                }
                 : s);
         },
         removeItem: (state, action) => {

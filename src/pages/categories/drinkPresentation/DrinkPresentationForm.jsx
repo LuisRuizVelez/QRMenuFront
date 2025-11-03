@@ -1,12 +1,14 @@
 import * as Yup from "yup";
+import { useState } from "react";
 import { Card, CardBody, CardFooter, CardTitle, Col, Form, Row } from "reactstrap";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { useSelector } from "react-redux";
+import Switch from "react-switch";
 
 
 // components
-import DishPresentationLangs from "./DishPresentationLangs"; // Lang Component
+import DrinkPresentationLangs from "./DrinkPresentationLangs"; // Lang Component
 
 
 // actions
@@ -16,11 +18,11 @@ import navigationActions from "../../../store/navigation/navigationActions";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
-import {API_PATH_DISH_PRESENTATION} from "../../../connection/apiPaths";
-import {STORE_PATHS_DISH_PRESENTATION} from "../../../store/StorePaths";
+import {API_PATH_DRINK_PRESENTATION} from "../../../connection/apiPaths";
+import {STORE_PATHS_DRINK_PRESENTATION} from "../../../store/StorePaths";
 
-const DishPresentationForm = props => {
-    const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_DISH_PRESENTATION));
+const DrinkPresentationForm = props => {
+    const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_DRINK_PRESENTATION));
     const { selectedItem, langsEdited:langs } = componentState?.data;
 
 
@@ -51,9 +53,9 @@ const DishPresentationForm = props => {
 
 
         if (!selectedItem?.id)
-            navigationActions.save(STORE_PATHS_DISH_PRESENTATION, API_PATH_DISH_PRESENTATION, requestData, onCloseForm)
+            navigationActions.save(STORE_PATHS_DRINK_PRESENTATION, API_PATH_DRINK_PRESENTATION, requestData, onCloseForm)
         else
-            navigationActions.update(STORE_PATHS_DISH_PRESENTATION, API_PATH_DISH_PRESENTATION, selectedItem.id, requestData, onCloseForm)
+            navigationActions.update(STORE_PATHS_DRINK_PRESENTATION, API_PATH_DRINK_PRESENTATION, selectedItem.id, requestData, onCloseForm)
     }
 
     const onCloseForm = () => props.onClose();
@@ -78,7 +80,7 @@ const DishPresentationForm = props => {
                     </Col>
                 </Row>
 
-                <DishPresentationLangs />
+                <DrinkPresentationLangs />
             </CardBody>
             <CardFooter>
                 <button type="submit" className="btn btn-primary">
@@ -92,4 +94,4 @@ const DishPresentationForm = props => {
     </Form>
 }
 
-export default DishPresentationForm
+export default DrinkPresentationForm

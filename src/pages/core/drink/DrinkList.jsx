@@ -70,7 +70,7 @@ const DrinkList = () => {
         ModalContainer( DrinkForm,{ data })
     }
 
-    const onAssingPrice = data => {
+    const onAssignPrice = data => {
         dispatch(navigationSetSelectedItem(STORE_PATHS_CORE_DRINK, data))
         ModalContainer( DrinkPrice,{ data })
     }
@@ -102,7 +102,7 @@ const DrinkList = () => {
             align: 'center',
             formatter: (cell, row) => <>
                 <button type="button" className="btn btn-primary btn-sm me-1" onClick={ () => onEdit(row) }>edit</button>
-                <button type="button" className="btn btn-warning btn-sm me-1" onClick={ () => onAssingPrice(row) }>$</button>
+                <button type="button" className="btn btn-warning btn-sm me-1" onClick={ () => onAssignPrice(row) }>$</button>
                 <button type="button" className="btn btn-danger btn-sm me-1" onClick={ () => onDelete(row) }>eliminar</button>
             </>
         }

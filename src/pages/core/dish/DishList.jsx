@@ -25,7 +25,9 @@ import {
 
 // paths
 import {API_PATH_CORE_DISH} from "../../../connection/apiPaths"
-import {STORE_PATHS_CORE_DISH} from "../../../store/StorePaths";
+import {STORE_PATHS_CORE_DISH, STORE_PATHS_CORE_DRINK} from "../../../store/StorePaths";
+import DrinkPrice from "../drink/DrinkPrice";
+import DishPrice from "./DishPrice";
 
 
 
@@ -68,6 +70,12 @@ const DishList = () => {
         ModalContainer( DishForm,{ data })
     }
 
+    const onAssignPrice = data => {
+        dispatch(navigationSetSelectedItem(STORE_PATHS_CORE_DISH, data))
+        ModalContainer( DishPrice,{ data })
+    }
+
+
     const onDelete = ({id}) => ConfirmDelete({
         id,
         title: `Eliminar el Platillo`,
@@ -92,6 +100,7 @@ const DishList = () => {
             align: 'center',
             formatter: (cell, row) => <>
                 <button type="button" className="btn btn-primary btn-sm me-1" onClick={ () => onEdit(row) }>edit</button>
+                <button type="button" className="btn btn-warning btn-sm me-1" onClick={ () => onAssignPrice(row) }>$</button>
                 <button type="button" className="btn btn-danger btn-sm me-1" onClick={ () => onDelete(row) }>eliminar</button>
             </>
         }

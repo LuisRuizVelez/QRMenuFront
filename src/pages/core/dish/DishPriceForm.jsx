@@ -34,11 +34,11 @@ const DishPriceForm = () => {
             item: {
                 presentation,
                 currency,
-                drink: {id: selectedItem.id},
+                dish: {id: selectedItem.id},
                 price: parseFloat(data.price),
             }
         }
-
+        
         navigationActions.save(STORE_PATHS_DISH_PRICE, API_PATH_DISH_PRICE, requestData, cleanFields)
     };
 

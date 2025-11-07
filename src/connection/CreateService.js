@@ -37,6 +37,24 @@ const createService = path => ({
     getSectionByUser: (username) =>
         doRequest(`${path}/getSectionsByUser/${username}`, 'GET',{showAlert: false}),
 
+    getDishes: (menuId) =>
+        doRequest(`${path}/getDishes/${menuId}`, 'GET', { showAlert: false }),
+
+    addDish: (data) =>
+        doRequest(`${path}/addDish`, 'POST',{data}),
+
+    removeDish: (data) =>
+        doRequest(`${path}/removeDish`, 'DELETE',{data}),
+
+    getDrinks: (menuId) =>
+        doRequest(`${path}/getDrinks/${menuId}`, 'GET', { showAlert: false }),
+
+    addDrink: (data) =>
+        doRequest(`${path}/addDrink`, 'POST',{data}),
+
+    removeDrink: (data) =>
+        doRequest(`${path}/removeDrink`, 'DELETE',{data}),
+
 });
 
 export const getCustomService = path => {

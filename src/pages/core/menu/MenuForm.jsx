@@ -21,6 +21,7 @@ import {getStateByPath} from "../../../store/navigation/navigationThunks";
 import {API_PATH_CORE_MENU, API_PATH_CORE_RESTAURANT, API_PATH_MENU_CATEGORY} from "../../../connection/apiPaths";
 import {STORE_PATHS_CORE_MENU} from "../../../store/StorePaths";
 import CustomSelect from "../../../components/CustomSelect";
+import DishByMenu from "./DishByMenu";
 
 const MenuForm = props => {
     const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_CORE_MENU));
@@ -146,6 +147,18 @@ const MenuForm = props => {
                 </Row>
 
                 <MenuLangs />
+
+                <br/>
+
+
+                {
+                    selectedItem && <Row>
+                        <Col>
+                            <DishByMenu menu={selectedItem} />
+                        </Col>
+                        <Col>Bebidas</Col>
+                    </Row>
+                }
             </CardBody>
             <CardFooter>
                 <button type="submit" className="btn btn-primary">

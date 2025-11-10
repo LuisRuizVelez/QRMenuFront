@@ -9,12 +9,16 @@ import {getStateByPath, navigationSetFilter} from "../../../store/navigation/nav
 
 // paths
 import {STORE_PATHS_ROLE} from "../../../store/StorePaths";
+import {useState} from "react";
+import Switch from "react-switch";
 
 
 const RoleFilters =  () => {
     const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_ROLE));
     const { filter } = componentState?.data || {};
     const dispatch = useDispatch();
+
+    const [isToGrouping, setIsToGrouping] = useState(filter?.isToGrouping || false);
 
     const {
         register,
@@ -31,6 +35,7 @@ const RoleFilters =  () => {
         const filterData = {
             item : {
                 ...data,
+                isToGrouping,
             }
         };
 
@@ -40,6 +45,7 @@ const RoleFilters =  () => {
 
 
     const cleanFields = () => {
+        setIsToGrouping(null)
         reset({
             authority: ''
         });
@@ -58,6 +64,19 @@ const RoleFilters =  () => {
                             type="text"
                             {...register("authority")}
                         />
+                    </FormGroup>
+                </Col>
+                <Col>
+                    <FormGroup>
+                        <label className="form-label">
+                            <span>¿Es un rol agrupador?</span> <br/>
+                            <Switch
+                                checked={isToGrouping}
+                                onChange={() => setIsToGrouping(!isToGrouping)}
+                                uncheckedIcon={false}
+                                checkedIcon={false}
+                            />
+                        </label>
                     </FormGroup>
                 </Col>
             </Row>

@@ -13,6 +13,7 @@ const CustomSelect = ({
     isClearable = true,
     classValue = '',
     customFilter = {},
+    placeholder = 'Selecciona una opción...'
 }) => {
     const [loading, setLoading] = useState(true)
     const [items, setItems] = useState([])
@@ -74,6 +75,7 @@ const CustomSelect = ({
             isDisabled={ isDisabled }
             isClearable={ isClearable }
             onChange={onSelectChange}
+            placeholder={placeholder}
         />
         { errorMessage && <div className="invalid-feedback" style={{'display':'block'}}>  {errorMessage} </div> }
     </>

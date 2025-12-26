@@ -9,6 +9,7 @@ import Switch from "react-switch";
 
 // components
 import RestaurantLangs from "./RestaurantLangs"; // Lang Component
+import CustomSelect from "../../../components/CustomSelect";
 
 
 // actions
@@ -16,11 +17,12 @@ import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 
 // paths
 import {API_PATH_CORE_RESTAURANT, API_PATH_RESTAURANT_CATEGORY} from "../../../connection/apiPaths";
 import {STORE_PATHS_CORE_RESTAURANT} from "../../../store/StorePaths";
-import CustomSelect from "../../../components/CustomSelect";
+
 
 const RestaurantForm = props => {
     const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_CORE_RESTAURANT));
@@ -58,6 +60,13 @@ const RestaurantForm = props => {
             }
         }
 
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
 
         if (!selectedItem?.id)
             navigationActions.save(STORE_PATHS_CORE_RESTAURANT, API_PATH_CORE_RESTAURANT, requestData, onCloseForm)

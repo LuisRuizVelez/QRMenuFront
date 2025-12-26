@@ -16,6 +16,7 @@ import CustomSelect from "../../../components/CustomSelect";
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
@@ -57,6 +58,15 @@ const DrinkForm = props => {
                 menu
             }
         }
+
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
+        
 
         if (!selectedItem?.id)
             navigationActions.save(STORE_PATHS_CORE_DRINK, API_PATH_CORE_DRINK, requestData, onCloseForm)

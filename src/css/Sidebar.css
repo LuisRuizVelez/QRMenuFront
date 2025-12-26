@@ -12,3 +12,12 @@
     font-weight: bold;
     color: #007bff !important;
 }
+
+.select-container {
+    margin-right: 1em;
+    width: 20em;
+}
+
+.select-item {
+    width: 100%;
+}

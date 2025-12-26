@@ -2,7 +2,8 @@ import {
     setSelectedSection,
     removeSelectedSection,
     setEditableLangs,
-    setLoading
+    setLoading,
+    clearUiState
 } from './uiSlice';
 
 
@@ -20,4 +21,8 @@ export const uiSetEditableLangs = langs => async (dispatch) => {
 
 export const uiSetLoading = loading => async (dispatch) => {
     dispatch(setLoading( { loading } ));
+}
+
+export const uiClearState = () => async (dispatch) => {
+    dispatch(clearUiState());
 }

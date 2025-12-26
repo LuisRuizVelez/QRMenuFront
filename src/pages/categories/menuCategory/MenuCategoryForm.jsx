@@ -13,6 +13,7 @@ import MenuCategoryLangs from "./MenuCategoryLangs";
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
@@ -48,6 +49,15 @@ const MenuCategoryForm = props => {
                 langs
             }
         }
+
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
+        
 
 
         if (!selectedItem?.id)

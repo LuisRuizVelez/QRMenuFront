@@ -16,11 +16,12 @@ import CustomSelect from "../../../components/CustomSelect";
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
-import {API_PATH_CORE_DISH, API_PATH_CORE_MENU, API_PATH_DISH_CATEGORY} from "../../../connection/apiPaths";
 import {STORE_PATHS_CORE_DISH} from "../../../store/StorePaths";
+import {API_PATH_CORE_DISH, API_PATH_CORE_MENU, API_PATH_DISH_CATEGORY} from "../../../connection/apiPaths";
 
 
 const DishForm = props => {
@@ -57,6 +58,15 @@ const DishForm = props => {
                 menu
             }
         }
+
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
+        
 
 
         if (!selectedItem?.id)

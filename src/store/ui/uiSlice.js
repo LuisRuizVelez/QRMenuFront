@@ -22,7 +22,11 @@ export const uiSlice = createSlice({
         },
         setLoading: (state, action) => {
             state.loading = action.payload.loading;
-        }
+        },
+        clearUiState: (state) => {
+            state.selectedSection = null;
+            state.editableLangs = [];
+        },
     }
 })
 
@@ -30,5 +34,6 @@ export const {
     setSelectedSection,
     removeSelectedSection,
     setEditableLangs,
-    setLoading
+    setLoading,
+    clearUiState
 } = uiSlice.actions;

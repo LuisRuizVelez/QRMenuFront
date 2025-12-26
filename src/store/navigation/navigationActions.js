@@ -7,7 +7,6 @@ import {
     navigationRemoveItem,
     navigationAddItem,
     navigationUpdateItem,
-    navigationSetLangsEdited,
 } from "./navigationThunks";
 
 import {getCustomService} from "../../connection/CreateService";

@@ -56,11 +56,25 @@ const validate = async () => {
 };
 
 
+const getGroupingRole = async (username) => {
+    const url = getEndPoint(`api/User/getGroupingRole/${username}` );
+    
+    try {
+        const response = await axios.get(url, { headers: createHeaders() });
+        return response?.data;
+    } catch (error) {
+        console.error('Login failed', error);
+        throw new Error(error.response?.data?.message || 'Login failed');
+    }
+};
+
+
 export const authenticationService = {
     login,
     logout,
     validate,
-    getCurrentUser
+    getCurrentUser,
+    getGroupingRole
 }
 
 

@@ -8,20 +8,23 @@ import Switch from "react-switch";
 
 
 // components
-import MenuLangs from "./MenuLangs"; // Lang Component
+import MenuLangs from "./MenuLangs"; 
+import DishByMenu from "./DishByMenu";
+import CustomSelect from "../../../components/CustomSelect";
 
 
 // actions
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
-import {API_PATH_CORE_MENU, API_PATH_CORE_RESTAURANT, API_PATH_MENU_CATEGORY} from "../../../connection/apiPaths";
 import {STORE_PATHS_CORE_MENU} from "../../../store/StorePaths";
-import CustomSelect from "../../../components/CustomSelect";
-import DishByMenu from "./DishByMenu";
+import {API_PATH_CORE_MENU, API_PATH_CORE_RESTAURANT, API_PATH_MENU_CATEGORY} from "../../../connection/apiPaths";
+
+
 
 const MenuForm = props => {
     const componentState = useSelector(state => getStateByPath(state, STORE_PATHS_CORE_MENU));
@@ -59,9 +62,13 @@ const MenuForm = props => {
             }
         }
         
-        console.log("\n\n\n<=======  CUSTOM MESSAGE: requestData  ========>")
-        console.log({requestData})
-        console.log("<=======  END MESSAGE: requestData  ========>")
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
 
 
         if (!selectedItem?.id)

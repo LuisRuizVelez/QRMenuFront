@@ -4,8 +4,6 @@ import { Card, CardBody, CardFooter, CardTitle, Col, Form, Row } from "reactstra
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { useSelector } from "react-redux";
-import Switch from "react-switch";
-
 
 // components
 import DrinkPresentationLangs from "./DrinkPresentationLangs"; // Lang Component
@@ -15,6 +13,7 @@ import DrinkPresentationLangs from "./DrinkPresentationLangs"; // Lang Component
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
@@ -50,6 +49,14 @@ const DrinkPresentationForm = props => {
                 langs,
             }
         }
+
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
 
 
         if (!selectedItem?.id)

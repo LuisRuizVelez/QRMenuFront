@@ -24,24 +24,28 @@ const MAP_ROUTERS = [
         code:'rest',
         name:'Restaurant',
         path:'/restaurant',
+        groupingRoleIsRequired: true,
         component: <Restaurant />
     },
     {
         code:'rest',
         name:'Menu',
         path:'/menu',
+        groupingRoleIsRequired: true,
         component: <Menu />
     },
     {
         code:'rest',
         name:'Platillos',
         path:'/dish',
+        groupingRoleIsRequired: true,
         component: <Dish />
     },
     {
         code:'rest',
         name:'Bebidas',
         path:'/drink',
+        groupingRoleIsRequired: true,
         component: <Drink />
     },
 
@@ -52,36 +56,43 @@ const MAP_ROUTERS = [
         code:'categories',
         name:'Categorías de Restaurante',
         path:'/categories/restaurant',
+        groupingRoleIsRequired: true,
         component: <RestaurantCategory />
     }, {
         code:'categories',
         name:'Categorías de Menú',
         path:'/categories/menu',
+        groupingRoleIsRequired: true,
         component: <MenuCategory />
     }, {
         code:'categories',
         name:'Categorías de Patillos',
         path:'/categories/dish',
+        groupingRoleIsRequired: true,
         component: <DishCategory />
     }, {
         code:'categories',
         name:'Atributos de Platillos',
         path:'/categories/dish_attributes',
+        groupingRoleIsRequired: true,
         component: <DishAttributes />
     }, {
         code:'categories',
         name:'Presentación de los Platillos',
         path:'/categories/dish_presentation',
+        groupingRoleIsRequired: true,
         component: <DishPresentation />
     }, {
         code:'categories',
         name:'Presentación del Bebidas',
         path:'/categories/drink_presentation',
+        groupingRoleIsRequired: true,
         component: <DrinkPresentation />
     }, {
         code:'categories',
         name:'Categorías de la Bebida',
         path:'/categories/drink',
+        groupingRoleIsRequired: true,
         component: <DrinkCategory />
     },
 
@@ -93,16 +104,19 @@ const MAP_ROUTERS = [
         code:'config',
         name:'Países',
         path:'/categories/country',
+        groupingRoleIsRequired: false,
         component: <Country />
     }, {
         code:'config',
         name:'Idiomas',
         path:'/categories/lang',
+        groupingRoleIsRequired: false,
         component: <Lang />
     },{
         code:'config',
         name:'Monedas',
         path:'/categories/currency',
+        groupingRoleIsRequired: false,
         component: <Currency />
     },
 
@@ -113,16 +127,19 @@ const MAP_ROUTERS = [
         code:'firebase',
         name:'Proyectos',
         path:'/firebase/project',
+        groupingRoleIsRequired: false,
         component: <FBProject />
     }, {
         code:'firebase',
         name:'Base de Datos',
         path:'/firebase/databases',
+        groupingRoleIsRequired: false,
         component: <FBDatabase />
     }, {
         code:'firebase',
         name:'Paths de Componentes',
         path:'/firebase/child_paths',
+        groupingRoleIsRequired: false,
         component: <FBChildPath />
     },
 
@@ -132,6 +149,7 @@ const MAP_ROUTERS = [
         code:'security',
         name:'Usuarios',
         path:'/security/users',
+        groupingRoleIsRequired: false,
         component: <User />
     }, {
         code:'security',
@@ -145,6 +163,7 @@ const MAP_ROUTERS = [
         code:'ui',
         name:'Secciones',
         path:'/ui/section',
+        groupingRoleIsRequired: false,
         component: <Section />
     },
 ]

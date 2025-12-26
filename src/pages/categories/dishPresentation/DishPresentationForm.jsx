@@ -13,6 +13,7 @@ import DishPresentationLangs from "./DishPresentationLangs"; // Lang Component
 import navigationActions from "../../../store/navigation/navigationActions";
 
 // thunks
+import { validateGroupingRole } from "../../../store/auth/authThunks";
 import {getStateByPath} from "../../../store/navigation/navigationThunks";
 
 // paths
@@ -48,6 +49,14 @@ const DishPresentationForm = props => {
                 langs,
             }
         }
+
+        const groupingRoleValidationResult = validateGroupingRole(requestData);
+                        
+        if(!groupingRoleValidationResult.valid) 
+            return
+
+        if (groupingRoleValidationResult?.groupingRole)
+            requestData.item.groupingRole = groupingRoleValidationResult.groupingRole;
 
 
         if (!selectedItem?.id)

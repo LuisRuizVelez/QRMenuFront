@@ -26,10 +26,12 @@ const HTTP_STATUS = {
     UNKNOWN_ERROR: 520,
 };
 
+const CURRENT_ENVIRONMENT = 'production'; // Change this to 'develop' or 'test' or 'production' as needed
+
 
 // Create a reusable Axios instance
 const api = axios.create({
-    baseURL: getBaseEndPoint(),
+    baseURL: getBaseEndPoint(CURRENT_ENVIRONMENT),
     responseType: "json",
 });
 

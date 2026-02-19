@@ -4,7 +4,7 @@ const ENVIRONMENT = 'develop'; // Change this to 'test' or 'production' as neede
 const API_ENV = {
     develop: 'http://localhost:8080/',
     test: 'http://localhost:8080/',
-    production: 'http://localhost:8080/',
+    production: 'http://3.137.173.103:8080/QRMenuBack-0.1/',
 }
 
 

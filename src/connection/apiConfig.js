@@ -1,4 +1,4 @@
-const ENVIRONMENT = 'develop'; // Change this to 'test' or 'production' as needed
+const ENVIRONMENT = 'production'; // Change this to 'test' or 'production' as needed
 
 
 const API_ENV = {
@@ -26,3 +26,5 @@ export const getEndPoint = (path = null, env = ENVIRONMENT) => {
     const baseURL = getBaseEndPoint(env);
     return `${baseURL}${path}`;
 }
+
+export const getCurrentEnvironment = () => ENVIRONMENT

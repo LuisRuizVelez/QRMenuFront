@@ -10,8 +10,10 @@ import {API_PATH_SECTION} from "../connection/apiPaths";
 import '../css/Section.css'
 import Loader from "../ui/Loader";
 import {uiSetSelectedSection} from "../store/ui/uiThunks";
+import {getCurrentEnvironment} from "../connection/apiConfig";
 
 const Main = () => {
+    const imagePath = getCurrentEnvironment() === 'production' ? '/menuqrfront/' : '/'
     const {username} = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
@@ -58,7 +60,7 @@ const Main = () => {
                     className="section"
                     onClick={() => onClickSection(section)}
                 >
-                    <img src={`/${section?.image}`} alt={section?.image}/>
+                    <img src={`${imagePath}${section?.image}`} alt={section?.image}/>
                     <h2>{section?.name}</h2>
                 </div>)
             }

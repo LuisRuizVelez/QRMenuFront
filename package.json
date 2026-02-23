@@ -1,5 +1,6 @@
 {
   "name": "qr-menu-front",
+  "homepage": "/menuqrfront",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

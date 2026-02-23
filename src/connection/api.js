@@ -26,7 +26,6 @@ const HTTP_STATUS = {
     UNKNOWN_ERROR: 520,
 };
 
-
 // Create a reusable Axios instance
 const api = axios.create({
     baseURL: getBaseEndPoint(),
